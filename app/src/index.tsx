@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RemoteServerContext from './context/remoteServerContext';
 import { MediaProvider } from './context/mediaContext';
-import { YourRemoteServer } from './context/remoteServer';
+import { FirebaseStorageServer } from './context/remoteServer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RemoteServerContext.Provider value={new YourRemoteServer()}> 
+    <RemoteServerContext.Provider value={new FirebaseStorageServer()}> 
       <MediaProvider>
         <App />
       </MediaProvider>

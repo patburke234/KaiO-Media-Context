@@ -1,0 +1,51 @@
+{
+  "name": "KaiOS Media Context",
+  "version": "1.0.0",
+  "type": "privileged",
+  "description": "KaiOS Media Context",
+  "launch_path": "/index.html",
+  "icons": {
+    "56": "/icons/ic_launcher_56.png",
+    "112": "/icons/ic_launcher_112.png",
+    "128": "/icons/ic_launcher_128.png"
+  },
+
+  "developer": {
+    "name": "Patrick Burke",
+    "url": ""
+  },
+  "locales": {
+    "en-US":{
+      "name": "KaiOS",
+      "description": "Media Context",
+      "subtitle": "Short description for the user"
+    }
+  },
+  "categories": [
+    "life style",
+    "book/reference"
+  ],
+  "default_locale": "en-US",
+  "subtitle": "Media Context.",
+  "permissions":{
+    "input":{
+      "description": "Required to enter values"
+    },
+    "video-capture":{
+      "description": "Required to record answers to questions."
+    },
+    "mobilenetwork":{
+      "description": "Required to identify the user."
+    },
+    "systemXHR": {
+      "description": "Required to download videos."
+    },
+    "serviceworker": {
+        "description": "Needed for assocating service worker"
+    },
+    "storage": {},
+    "device-storage:sdcard": { "access": "readwrite" },
+    "device-storage:pictures": { "access": "readwrite" },
+    "device-storage:videos": { "access": "readwrite" }
+  }
+}

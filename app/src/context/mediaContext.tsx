@@ -39,7 +39,7 @@ interface LocalProps {
 type Props = LocalProps & RemoteServerContextProps;
 
 class MediaContext extends Component<Props, State> {
-  private rootFolder:string = "rootDeviceFolder"; //Add your name here
+  private rootFolder:string = "root"; //Add your name here
   private sdCardFolder:string = "/sdcard/";
 
   constructor(props:Props){
@@ -168,6 +168,7 @@ class MediaContext extends Component<Props, State> {
     if(this.state.isDebugMode) return false;
 
     while(!this.state.deviceReady){
+      console.log("Device not ready, waiting...");
       await this.sleep(1000);
     }
     return true;
@@ -322,13 +323,13 @@ class MediaContext extends Component<Props, State> {
     return undefined;
   }
 
-  getRemoteFileUrl = async(fileName: string, downloadInBackground?: boolean): Promise<string | undefined> => {
+  getRemoteFileUrl = async(fileName: string, downloadInBackground?: boolean, useLocalIfExists?: boolean): Promise<string | undefined> => {
     let localFilePath = fileName;
     if(!localFilePath.startsWith(this.sdCardFolder)){
       localFilePath = this.sdCardFolder + this.rootFolder + "/" + fileName;
     }
 
-    if(this.state.metadataDB.has(localFilePath)){
+    if(useLocalIfExists === true && this.state.metadataDB.has(localFilePath)){
       const file = this.state.metadataDB.get(localFilePath);
       if(file){
           if(file.isLocal){
